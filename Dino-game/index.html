@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="game" class="">
+    <div class="score">
+        <span class="current-score">00000</span>
+    </div>
+    <div class="ground">
+        <div class="cactus"></div>
+    </div>
+    <div class="messages">
+        <p>Presss any button to play</p>
+        <p>Game Over</p>
+    </div>
+    <div class="dino"></div>
+    <div class="resources">
+        <audio src="assets/dino/jump.wav" class="audio-jump"></audio>
+        <audio src="assets/dino/die.wav" class="audio-die"></audio>
+        <audio src="assets/dino/point.wav" class="audio-point"></audio>
+    </div>
+    <div class="footer">
+        <label for="selfplay">Enable Self play</label>
+        <input type="checkbox" name="selfplay" id="selfplay" value="true">
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

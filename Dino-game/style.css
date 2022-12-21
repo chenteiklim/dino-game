@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root{
+    --game-speed: 0; /* in ms */
+    --jump-speed:0; /* in ms */
+    --max-jump:0; /* in percent */
+    --speed-scale: 0; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: 'VT323', monospace;
+}
+
+html{
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#game{
+    position: relative;
+    width: 1051px;
+    height: 384px;
+    border: 1px solid black;
+}
+
+.score{
+    position: absolute;
+    right: 0px;
+    font-size: xx-large;
+    color: #535353;
+
+}
+
+.messages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: xx-large;
+    color: #535353
+}
+
+.messages p{
+    display: none;
+}
+
+/* Before the game start */
+.messages p:first-child{
+    display: block;
+}
+
+/* after the game start */
+.game-started .messages p:first-child{
+    display: none;
+}
+
+/* Game over */
+.game-over .messages p:last-child{
+    display: block;
+}
+
+.ground{
+    position: absolute;
+    bottom: 0;
+    background-image: url(assets/dino/images/ground.png);
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    width: 7197px;
+    height: 24px;
+}
+
+.game-started .ground{
+    animation: ground-animation calc(var(--game-speed)*1ms) linear infinite; 
+}
+
+.game-over .ground{
+    animation-play-state: paused;
+}
+
+@keyframes ground-animation {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -2399px;
+    }
+}
+
+.dino{
+    position:absolute;
+    bottom: 0;
+    background-image: url(assets/dino/images/dino/dino_initial.png) ;
+    background-repeat: no-repeat;
+    width: 88px;
+    height: 94px;
+    image-rendering: pixelated;
+}
+
+.dino.jump{
+    animation: dino-jump-animation calc(var(--jump-speed)*1ms) linear;
+}
+
+
+@keyframes dino-jump-animation{
+    0%{
+        transform: translate3d(0, 0, 0);
+        animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1) 
+
+    }
+    50%{
+        transform: translate3d(0, calc(var(--max-jump)* -1%), 0);
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
+    }
+    100%{
+        transform: translate3d(0, 0, 0);
+    }
+
+}
+
+.cactus{
+    position: absolute;
+    bottom: 0;
+    left: 2000px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+.cactus-small-1{
+    background-image: url(assets/dino/images/cacti/cacti_small_1.png);
+    height: 70px;
+    width: 34px;
+}
+
+.cactus-small-2{
+    background-image: url(assets/dino/images/cacti/cacti_small_2.png);
+    height: 70px;
+    width: 68px;
+}
+
+.cactus-small-3{
+    background-image: url(assets/dino/images/cacti/cacti_small_3.png);
+    height: 70px;
+    width: 102px;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    width: 100vw;
+    padding: 10px;
+}
